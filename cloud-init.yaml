@@ -1,0 +1,20 @@
+#cloud-config
+package_update: true
+package_upgrade: false
+
+packages:
+  - iptables
+  - iptables-persistent
+  - ipcalc
+
+write_files:
+  - path: /etc/sysctl.d/99-ip-forward.conf
+    content: |
+      net.ipv4.ip_forward=1
+
+runcmd:
+  - sysctl -w net.ipv4.ip_forward=1
+  - CIDR=$(ip -o -f inet addr show eth1 | awk '{print $4}')
+  - NETWORK=$(ipcalc "$CIDR" | grep -w Network | awk '{print $2}')
+  - iptables -t nat -A POSTROUTING -s "$NETWORK" -o eth0 -j MASQUERADE
+  - iptables-save > /etc/iptables/rules.v4
