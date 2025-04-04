@@ -6,7 +6,7 @@ variable "name_prefix" {
 variable "igw_count" {
   description = "Number of igws created/"
   type        = number
-  default = 1
+  default     = 1
 }
 
 variable "region" {
@@ -32,7 +32,7 @@ variable "image" {
 variable "monitoring" {
   description = "Whether monitoring agent is installed"
   type        = bool
-  default = true
+  default     = true
 }
 
 variable "vpc_id" {
@@ -43,18 +43,19 @@ variable "vpc_id" {
 variable "ssh_keys" {
   description = "A list of SSH key IDs or fingerprints to enable in the format [12345, 123456]"
   type        = list(number)
-  default = []
+  default     = []
 }
 
 variable "tags" {
   description = "A list of the tags to be applied to this Droplet"
   type        = list(string)
-  default = []
+  default     = []
 }
 
 variable "doks_cluster_name" {
   description = "DOKS cluster name"
   type        = string
+  default     = null
 }
 
 
