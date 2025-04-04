@@ -3,10 +3,10 @@ variable "name_prefix" {
   type        = string
 }
 
-variable "name_suffix" {
-  description = "suffix to add to the droplet deployed, usable to specify a unique id"
-  type        = string
-  default = ""
+variable "igw_count" {
+  description = "Number of igws created/"
+  type        = number
+  default = 1
 }
 
 variable "region" {
@@ -50,6 +50,11 @@ variable "tags" {
   description = "A list of the tags to be applied to this Droplet"
   type        = list(string)
   default = []
+}
+
+variable "doks_cluster_name" {
+  description = "DOKS cluster name"
+  type        = string
 }
 
 
