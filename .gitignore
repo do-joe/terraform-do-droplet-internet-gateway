@@ -36,6 +36,9 @@ override.tf.json
 .terraformrc
 terraform.rc
 
+# lock file
+.terraform.lock.hcl
+
 # IDE Files
 .idea/
 scratch/

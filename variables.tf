@@ -1,12 +1,17 @@
 variable "name_prefix" {
-  description = "prefix used for the resources created in this module"
+  description = "prefix used for the name of IGW created in this module."
   type        = string
 }
 
 variable "igw_count" {
-  description = "Number of igws created/"
+  description = "Number of IGWs created"
   type        = number
   default     = 1
+
+  validation {
+    condition     = var.igw_count >= 1
+    error_message = "igw_count must be at least 1."
+  }
 }
 
 variable "region" {
@@ -36,7 +41,7 @@ variable "monitoring" {
 }
 
 variable "vpc_id" {
-  description = "Id of the VPC which the Droplet is connected to"
+  description = "Id of the VPC which the IGW Droplet is connected to"
   type        = string
 }
 
@@ -53,10 +58,11 @@ variable "tags" {
 }
 
 variable "doks_cluster_name" {
-  description = "DOKS cluster name"
+  description = "Name of DOKS cluster with Routing Agent enabled to configure to use the IGWs as default route."
   type        = string
   default     = null
 }
+
 
 
 
