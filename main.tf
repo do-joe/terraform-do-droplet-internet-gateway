@@ -22,7 +22,6 @@ resource "digitalocean_droplet" "igw" {
   ssh_keys   = var.ssh_keys
   tags       = var.tags
   user_data  = file("${path.module}/cloud-init.yaml")
-}
 
 data "digitalocean_kubernetes_cluster" "doks_cluster" {
   count = var.doks_cluster_name != null ? 1 : 0
