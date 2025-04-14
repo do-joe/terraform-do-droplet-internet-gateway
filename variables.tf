@@ -58,7 +58,7 @@ variable "tags" {
 }
 
 variable "doks_cluster_name" {
-  description = "Name of DOKS cluster with Routing Agent enabled to configure to use the IGWs as default route."
+  description = "Name of DOKS cluster with Routing Agent enabled to configure to use the IGWs as default route. "
   type        = string
   default     = null
 }

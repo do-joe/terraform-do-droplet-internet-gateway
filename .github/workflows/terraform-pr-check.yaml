@@ -24,3 +24,24 @@ jobs:
 
       - name: Terraform Format Check
         run: terraform fmt -check -recursive
+
+  tflint:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/terraform-linters/tflint
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Write TFLint config
+        run: |
+          cat <<EOF > .tflint.hcl
+          plugin "terraform" {
+            enabled = true
+            rules   = "all"
+          }
+          EOF
+
+      - name: Run TFLint
+        run: |
+          tflint --init
+          tflint
