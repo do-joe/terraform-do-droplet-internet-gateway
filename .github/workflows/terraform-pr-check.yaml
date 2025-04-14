@@ -37,7 +37,7 @@ jobs:
           cat <<EOF > .tflint.hcl
           plugin "terraform" {
             enabled = true
-            rules   = "all"
+            preset  = "all"
           }
           EOF
 
